@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1 class="h1 text-center my-3">Awesome Books!</h1>
-    <div class="container mx-auto rounded justify-content-center">
+    <div class="container mx-auto border rounded justify-content-center">
       <div class="col-md-8 text-center justify-content-center mx-auto mt-3">
         <div class="form-group mx-auto my-2">
           <label for="BookTitle" class="col-8">Title:</label>
@@ -19,7 +19,22 @@
           <label class="col-8">Author:</label>
           <input type="text" id="BookAuthor" class="col-8">
         </div>
-        <button type="button" class="btn-primary btn rounded col-5 my-2" id="SubmitButton">Save Book</button>
+        <button type="button" class="btn-primary btn rounded col-5 my-3" id="SubmitButton">Save Book</button>
+      </div>
+    </div>
+    <div class="container book-container row my-3 mx-auto text-center" id="BookContainer">
+      <div class="container mx-auto rounded justify-content-center">
+        <div class="col-md-8 text-center justify-content-center mx-auto mt-3 d-flex ">
+          <div class="book-group my-2">
+            <h3 class="h3">Title</h3>
+            <h2 class="h2">Title</h2>
+          </div>
+          <div class="book-group mx-auto my-2">
+            <h3 class="h3">Author</h3>
+            <h2 class="h2">Title</h2>
+          </div>
+          <button type="button" class="btn-primary btn rounded col-5 my-2" id="SubmitButton">Remove Book</button>
+        </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

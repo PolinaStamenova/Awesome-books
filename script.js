@@ -49,11 +49,11 @@ function displayBook(...args) {
   let tempArray = ["Title", "Author"];
   let mainContainer = document.getElementById('BookContainer');
   let container = document.createElement('div');
-  container.classList.add('container','mx-auto','border', 'rounded', 'justify-content-center')
+  container.classList.add('container','mx-auto','border', 'rounded', 'justify-content-center', 'my-2')
   console.log(args);
   for(let i = 0; i<tempArray.length; i +=1){
     let titleContainer = document.createElement('div');
-    titleContainer.classList.add('col-md-8', 'text-center', 'justify-content-center', 'mx-auto', 'my-3', 'd-flex')
+    titleContainer.classList.add('col-md-8', 'text-center', 'justify-content-center', 'mx-auto', 'my-2', 'd-flex')
     let titleLabel = document.createElement('h3');
     titleLabel.classList.add('h3', 'mx-2');
     titleLabel.textContent = tempArray[i]+":";
@@ -65,8 +65,8 @@ function displayBook(...args) {
     container.appendChild(titleContainer);
   }
   let removeButton = document.createElement('button');
-  removeButton.classList.add('btn', 'btn-primary',' rounded', 'col-5', 'my-2')
-  
+  removeButton.classList.add('btn', 'btn-primary', 'col-5', 'my-2');
+  removeButton.innerText = "Remove Book";
+  container.appendChild(removeButton);
   mainContainer.appendChild(container);
 }
-//div>div>div*2>h3+h2^+btn

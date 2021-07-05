@@ -1,54 +1,44 @@
 let awesomeBooks = [];
-
-function Book(bookTitle, bookAuthor) {
-  (this.bookTitle = bookTitle), (this.bookAuthor = bookAuthor);
+let bookIncrement = 0;
+function Book(bookTitle, bookAuthor, bookId) {
+  (this.bookTitle = bookTitle), (this.bookAuthor = bookAuthor), (this.bookId = bookId);
 }
 
-document.getElementById('SubmitButton').addEventListener('click',addBook)
+
+document.getElementById('SubmitButton').addEventListener('click', addBook);
 
 function addBook() {
   let bookTitleInput = document.getElementById("BookTitle").value;
   let bookAuthorInput = document.getElementById("BookAuthor").value;
-
-  awesomeBooks.push(new Book(bookTitleInput,bookAuthorInput));
+  
+  awesomeBooks.push(new Book(bookTitleInput,bookAuthorInput, bookIncrement));
 
   localStorage.setItem('awesomeBooks', JSON.stringify(awesomeBooks));
 
-  displayBook(book)
+  displayBook(bookTitleInput, bookAuthorInput, bookIncrement)
+  bookIncrement += 1;
 }
 
-function displayBook(book) {
+function displayBook(...args) {
+  let tempArray = ["Title", "Author"];
+  let mainContainer = document.getElementById('BookContainer');
+  let container = document.createElement('div');
+  container.classList.add('container','mx-auto','border', 'rounded', 'justify-content-center')
+  console.log(args);
+  for(let i = 0; i<tempArray.length; i +=1){
+    let titleContainer = document.createElement('div');
+    titleContainer.classList.add('col-md-8', 'text-center', 'justify-content-center', 'mx-auto', 'my-3', 'd-flex')
+    let titleLabel = document.createElement('h3');
+    titleLabel.classList.add('h3', 'mx-2');
+    titleLabel.textContent = tempArray[i]+":";
+    titleContainer.appendChild(titleLabel);
+    let bookTitle =  document.createElement('h2');
+    bookTitle.classList.add('h2', 'mx-2');
+    bookTitle.innerText = args[i];
+    titleContainer.appendChild(bookTitle);
+    container.appendChild(titleContainer);
+  }
 
-let mainContainer = document.getElementById('BookContainer');
-let container = document.createElement('div');
-container.classList.add('container',' mx-auto', 'rounded', 'justify-content-center')
-mainContainer.appendChild(container);
-
-let titleContainer = document.createElement('div');
-titleContainer.classList.add('col-md-8' 'text-center' 'justify-content-center' 'mx-auto' 'mt-3' 'd-flex')
-container.appendChild(titleContainer);
-
-let titleLabel =  document.createElement('h3');
-titleLabel.classList('h3');
-titleLabel.textContent = "Title";
-titleContainer.appendChild(titleLabel);
-
-let bookTitle =  document.createElement('h2');
-bookTitle.classList('h2');
-titleContainer.appendChild(bookTitle);
-
-let authorLabel =  document.createElement('h3');
-authorLabel.classList('h3');
-authorLabel.textContent = "Title";
-titleContainer.appendChild(authorLabel);
-
-let bookAuthor =  document.createElement('h2');
-bookAuthor.classList('h2');
-titleContainer.appendChild(bookAuthor);
-
-let removeButton = document.createElement('button');
-
+  mainContainer.appendChild(container);
 }
-
 //div>div>div*2>h3+h2^+btn
-event listener >submit button click

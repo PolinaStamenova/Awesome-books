@@ -3,8 +3,26 @@ let bookIncrement = 0;
 function Book(bookTitle, bookAuthor, bookId) {
   (this.bookTitle = bookTitle), (this.bookAuthor = bookAuthor), (this.bookId = bookId);
 }
-
-
+function getBooks(){
+  let tempStorage = JSON.parse(localStorage.getItem('awesomeBooks'));
+  if(tempStorage){
+    awesomeBooks = awesomeBooks.concat(tempStorage);
+  }
+}
+getBooks();
+function getBookId(){
+  let tempBoy = 0;
+  try{
+    tempBoy = awesomeBooks[awesomeBooks.length-1].bookId+1;
+  }
+  catch{
+    tempBoy = 0;
+  }
+  finally{
+    bookIncrement = tempBoy;
+  }
+}
+getBookId();
 document.getElementById('SubmitButton').addEventListener('click', addBook);
 
 function addBook() {

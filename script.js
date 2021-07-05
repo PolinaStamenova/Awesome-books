@@ -6,10 +6,18 @@ function Book(bookTitle, bookAuthor, bookId) {
 function getBooks(){
   let tempStorage = JSON.parse(localStorage.getItem('awesomeBooks'));
   if(tempStorage){
-    awesomeBooks = awesomeBooks.concat(tempStorage);
+    awesomeBooks = tempStorage;
   }
 }
 getBooks();
+function printStorage(){
+  if(!awesomeBooks.empty){
+    for(let i = 0; i < awesomeBooks.length; i += 1){
+      displayBook(awesomeBooks[i].bookTitle, awesomeBooks[i].bookAuthor, awesomeBooks[i].bookId);
+    }
+  }
+}
+printStorage();
 function getBookId(){
   let tempBoy = 0;
   try{
@@ -56,7 +64,9 @@ function displayBook(...args) {
     titleContainer.appendChild(bookTitle);
     container.appendChild(titleContainer);
   }
-
+  let removeButton = document.createElement('button');
+  removeButton.classList.add('btn', 'btn-primary',' rounded', 'col-5', 'my-2')
+  
   mainContainer.appendChild(container);
 }
 //div>div>div*2>h3+h2^+btn

@@ -1,35 +1,35 @@
 let bookIncrement = 0;
 
 class Book {
-  awesomeBooks = [];
   constructor(bookTitle, bookAuthor, bookId) {
     this.bookTitle = bookTitle;
     this.bookAuthor = bookAuthor;
     this.bookId = bookId;
   }
+  awesomeBooks;
 
   addBook() {
-    awesomeBooks.push(this);
 
-    localStorage.setItem("awesomeBooks", JSON.stringify(awesomeBooks));
+    localStorage.setItem("awesomeBooks", JSON.stringify(Book.awesomeBooks));
 
     displayBook(this.bookTitle, this.bookAuthor, this.bookId);
     bookIncrement += 1;
+    Book.awesomeBooks.filter(element => element !== null)
   }
 
   deleteBook() {
     const container = document.getElementById(`book${this.bookId}`);
     container.remove();
-    awesomeBooks = awesomeBooks.filter((book) => book.bookId !== this.bookId);
+    Book.awesomeBooks.splice(this.bookId, 1);
     localStorage.clear();
-    localStorage.setItem("awesomeBooks", JSON.stringify(awesomeBooks));
+    localStorage.setItem("awesomeBooks", JSON.stringify(Book.awesomeBooks))
   }
 }
-
+Book.awesomeBooks = [];
 function getBooks() {
   const tempStorage = JSON.parse(localStorage.getItem("awesomeBooks"));
   if (tempStorage) {
-    awesomeBooks = tempStorage;
+    Book.awesomeBooks = tempStorage;
   }
 }
 
@@ -38,7 +38,7 @@ getBooks();
 function getBookId() {
   let tempBoy = 0;
   try {
-    tempBoy = awesomeBooks[awesomeBooks.length - 1].bookId + 1;
+    tempBoy = Book.awesomeBooks[Book.awesomeBooks.length - 1].bookId + 1;
   } catch {
     tempBoy = 0;
   } finally {
@@ -87,27 +87,28 @@ function displayBook(...args) {
   removeButton.innerText = "Remove Book";
   container.appendChild(removeButton);
   mainContainer.appendChild(container);
-
   removeButton.addEventListener("click", () => {
-    deleteBook(selectedBook);
+    Book.awesomeBooks[selectedBook].deleteBook();
   });
+
 }
 
 document.getElementById("SubmitButton").addEventListener("click", () => {
   const bookTitleInput = document.getElementById("BookTitle").value;
   const bookAuthorInput = document.getElementById("BookAuthor").value;
 
-  let newBook = new Book(bookTitleInput, bookAuthorInput, bookIncrement);
-  newBook.addBook();
+  Book.awesomeBooks[bookIncrement] = new Book(bookTitleInput, bookAuthorInput, bookIncrement);
+  Book.awesomeBooks[bookIncrement].addBook();
+
 });
 
 function printStorage() {
-  if (!awesomeBooks.empty) {
-    for (let i = 0; i < awesomeBooks.length; i += 1) {
+  if (!Book.awesomeBooks.empty && !Book.awesomeBooks.null) {
+    for (let i = 0; i < Book.awesomeBooks.length; i += 1) {
       displayBook(
-        awesomeBooks[i].bookTitle,
-        awesomeBooks[i].bookAuthor,
-        awesomeBooks[i].bookId
+        Book.awesomeBooks[i].bookTitle,
+        Book.awesomeBooks[i].bookAuthor,
+        Book.awesomeBooks[i].bookId
       );
     }
   }

@@ -1,13 +1,33 @@
-let awesomeBooks = [];
 let bookIncrement = 0;
-function Book(bookTitle, bookAuthor, bookId) {
-  this.bookTitle = bookTitle;
-  this.bookAuthor = bookAuthor;
-  this.bookId = bookId;
+
+class Book {
+  awesomeBooks = [];
+  constructor(bookTitle, bookAuthor, bookId) {
+    this.bookTitle = bookTitle;
+    this.bookAuthor = bookAuthor;
+    this.bookId = bookId;
+  }
+
+  addBook() {
+    awesomeBooks.push(this);
+
+    localStorage.setItem("awesomeBooks", JSON.stringify(awesomeBooks));
+
+    displayBook(this.bookTitle, this.bookAuthor, this.bookId);
+    bookIncrement += 1;
+  }
+
+  deleteBook() {
+    const container = document.getElementById(`book${this.bookId}`);
+    container.remove();
+    awesomeBooks = awesomeBooks.filter((book) => book.bookId !== this.bookId);
+    localStorage.clear();
+    localStorage.setItem("awesomeBooks", JSON.stringify(awesomeBooks));
+  }
 }
 
 function getBooks() {
-  const tempStorage = JSON.parse(localStorage.getItem('awesomeBooks'));
+  const tempStorage = JSON.parse(localStorage.getItem("awesomeBooks"));
   if (tempStorage) {
     awesomeBooks = tempStorage;
   }
@@ -27,83 +47,70 @@ function getBookId() {
 }
 getBookId();
 
-function deleteBook(bookNum) {
-  const container = document.getElementById(`book${bookNum}`);
-  container.remove();
-  awesomeBooks = awesomeBooks.filter((book) => book.bookId !== bookNum);
-  localStorage.clear();
-  localStorage.setItem('awesomeBooks', JSON.stringify(awesomeBooks));
-}
-
 function displayBook(...args) {
-  const tempArray = ['Title', 'Author'];
-  const mainContainer = document.getElementById('BookContainer');
-  const container = document.createElement('div');
+  const tempArray = ["Title", "Author"];
+  const mainContainer = document.getElementById("BookContainer");
+  const container = document.createElement("div");
   container.id = `book${args[2]}`;
   container.classList.add(
-    'container',
-    'mx-auto',
-    'border',
-    'rounded',
-    'justify-content-center',
-    'my-2',
+    "container",
+    "mx-auto",
+    "border",
+    "rounded",
+    "justify-content-center",
+    "my-2"
   );
   for (let i = 0; i < tempArray.length; i += 1) {
-    const titleContainer = document.createElement('div');
+    const titleContainer = document.createElement("div");
     titleContainer.classList.add(
-      'col-md-8',
-      'text-center',
-      'justify-content-center',
-      'mx-auto',
-      'my-2',
-      'd-flex',
+      "col-md-8",
+      "text-center",
+      "justify-content-center",
+      "mx-auto",
+      "my-2",
+      "d-flex"
     );
-    const titleLabel = document.createElement('h3');
-    titleLabel.classList.add('h3', 'mx-2');
+    const titleLabel = document.createElement("h3");
+    titleLabel.classList.add("h3", "mx-2");
     titleLabel.textContent = `${tempArray[i]}:`;
     titleContainer.appendChild(titleLabel);
-    const bookTitle = document.createElement('h2');
-    bookTitle.classList.add('h2', 'mx-2');
+    const bookTitle = document.createElement("h2");
+    bookTitle.classList.add("h2", "mx-2");
     bookTitle.innerText = args[i];
     titleContainer.appendChild(bookTitle);
     container.appendChild(titleContainer);
   }
-  const removeButton = document.createElement('button');
+  const removeButton = document.createElement("button");
   const [, , selectedBook] = args;
   removeButton.id = selectedBook;
-  removeButton.classList.add('btn', 'btn-primary', 'col-5', 'my-2');
-  removeButton.innerText = 'Remove Book';
+  removeButton.classList.add("btn", "btn-primary", "col-5", "my-2");
+  removeButton.innerText = "Remove Book";
   container.appendChild(removeButton);
   mainContainer.appendChild(container);
 
-  removeButton.addEventListener('click', () => {
+  removeButton.addEventListener("click", () => {
     deleteBook(selectedBook);
   });
 }
 
-function addBook() {
-  const bookTitleInput = document.getElementById('BookTitle').value;
-  const bookAuthorInput = document.getElementById('BookAuthor').value;
+document.getElementById("SubmitButton").addEventListener("click", () => {
+  const bookTitleInput = document.getElementById("BookTitle").value;
+  const bookAuthorInput = document.getElementById("BookAuthor").value;
 
-  awesomeBooks.push(new Book(bookTitleInput, bookAuthorInput, bookIncrement));
+  let newBook = new Book(bookTitleInput, bookAuthorInput, bookIncrement);
+  newBook.addBook();
+});
 
-  localStorage.setItem('awesomeBooks', JSON.stringify(awesomeBooks));
-
-  displayBook(bookTitleInput, bookAuthorInput, bookIncrement);
-  bookIncrement += 1;
-}
-
-document.getElementById('SubmitButton').addEventListener('click', addBook);
 function printStorage() {
   if (!awesomeBooks.empty) {
     for (let i = 0; i < awesomeBooks.length; i += 1) {
       displayBook(
         awesomeBooks[i].bookTitle,
         awesomeBooks[i].bookAuthor,
-        awesomeBooks[i].bookId,
+        awesomeBooks[i].bookId
       );
     }
   }
 }
 
-document.addEventListener('DOMContentLoaded', printStorage());
+document.addEventListener("DOMContentLoaded", printStorage());

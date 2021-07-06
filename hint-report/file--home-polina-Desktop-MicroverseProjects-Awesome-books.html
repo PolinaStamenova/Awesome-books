@@ -1330,12 +1330,12 @@ button {
 </head>
 <body>
     <div class="section container">
-    <div class="scan-overview" data-id="1625487745518" id="main">
+    <div class="scan-overview" data-id="1625563390512" id="main">
         <div class="scan-overview__status">
             <div id="scan-percentage-bar" class="scan-overview__progress-bar end-animation" style="width: 100%"></div>
             <p>scanning <span id="scan-percentage">100%</span></p>
             <p class="scan-overview__scan-time">
-                scan time: <span id="scan-time">00:00</span>
+                scan time: <span id="scan-time">00:01</span>
             </p>
         </div>
         <div class="scan-overview--details">
@@ -1350,7 +1350,7 @@ button {
                     </div>
                     
                         <div class="scan-overview--time-stamp">
-                            <p class="scan-overview__subheader">Date: <span id="scan-date" class="overview--time-stamp__time-stamp" data-date="2021-07-05T12:22:24.699Z">2021-07-05T12:22:24.699Z</span></p>
+                            <p class="scan-overview__subheader">Date: <span id="scan-date" class="overview--time-stamp__time-stamp" data-date="2021-07-06T09:23:09.209Z">2021-07-06T09:23:09.209Z</span></p>
                         </div>
                     
                 </div>
@@ -1436,11 +1436,11 @@ button {
             <div class="rule-tile__results">
                 <div class="rule-tile__result-wrapper">
                     <p class="rule-tile__sub-category">hints</p>
-                    <p class="rule-tile__sub-category rule-tile__hints"><span>0</span></p>
+                    <p class="rule-tile__sub-category rule-tile__hints"><span>1</span></p>
                 </div>
                 <div class="rule-tile__result-wrapper">
                     <p class="rule-tile__sub-category">passed</p>
-                    <p class="rule-tile__sub-category"><span class="rule-tile__passed">6</span>&nbsp;/&nbsp;6</p>
+                    <p class="rule-tile__sub-category"><span class="rule-tile__passed">5</span>&nbsp;/&nbsp;6</p>
                 </div>
             </div>
         </div>
@@ -1538,14 +1538,53 @@ button {
     <div class="rule-result--category">
         <h3 id="category-compatibility">Compatibility <a href="#category-compatibility" class="hint-link" title="Compatibility"></a></h3>
         
+            <button title="expand" class="button-expand-all expanded">close all</button>
+
+        
     </div>
     
-        <div class="rule-result--details">
-    <div class="rule-result__message--passed">
-        <p>No issues</p>
-    </div>
-</div>
+        
+            <details open class="rule-result--details" id="highest-available-document-mode" aria-expanded="true" role="group">
+    <summary class="rule-title" title="show highest-available-document-mode&#39;s result details" role="button">highest-available-document-mode: 1 hints</summary>
+    <div class="rule-content">
+        
+        <div class="rule-doc-buttons">
+            <a class="rule-doc-button" rel="noopener noreferrer" target="_blank" href="https://webhint.io/docs/user-guide/hints/hint-highest-available-document-mode/#why-is-this-important"
+                title="highest-available-document-mode - Why is this important">
+                Why is this important <span class="rule-doc-icon"></span>
+            </a>
 
+            <a class="rule-doc-button" rel="noopener noreferrer" target="_blank" href="https://webhint.io/docs/user-guide/hints/hint-highest-available-document-mode/#examples-that-pass-the-hint"
+                title="highest-available-document-mode - How to fix it">
+                How to fix it <span class="rule-doc-icon"></span>
+            </a>
+        </div>
+        
+        
+            <div class="rule-result--details__body">
+                <p id="hint-highest-available-document-mode-1">
+                    <span class="rule-result--details__hint-number">hint #1:</span> The &#39;x-ua-compatible&#39; meta element should not be specified as it is not needed. <a href="#hint-highest-available-document-mode-1" class="hint-link" title="highest-available-document-mode: hint #1"></a>
+                </p>
+                
+                <p>
+                    <a class="rule-result--details__hint-link" target="_blank" rel="noopener noreferrer" href="file:///home/polina/Desktop/MicroverseProjects/Awesome-books/index.html">
+                        file:///home/polina/Deskt … Awesome-books/index.html
+                    </a>
+                </p>
+                
+                
+                <div class="rule-result__code">
+                    <code class="">&lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=edge&#34;&gt;</code>
+                </div>
+                
+                
+            </div>
+            
+        
+    </div>
+</details>
+
+        
     
 </section>
 

@@ -9,7 +9,7 @@ function getBooks() {
   // localStorage.clear();
   let tempStorage = JSON.parse(localStorage.getItem("awesomeBooks"));
   if (tempStorage) {
-    awesomeBooks = awesomeBooks.concat(tempStorage);
+    awesomeBooks = tempStorage;
   }
 }
 getBooks();
@@ -86,19 +86,21 @@ function displayBook(...args) {
     container.appendChild(titleContainer);
   }
   let removeButton = document.createElement("button");
-  removeButton.id = "button" + args[2];
+  removeButton.id = args[2];
   removeButton.classList.add("btn", "btn-primary", "col-5", "my-2");
   removeButton.innerText = "Remove Book";
   container.appendChild(removeButton);
   mainContainer.appendChild(container);
 
   removeButton.addEventListener("click", function () {
-    deleteBook(removeButton.id);
+    deleteBook(args[2]);
   });
 }
 
-function deleteBook(bookId) {
-  removingBook = awesomeBooks.filter((book) => book.bookId !== bookId);
-
-  localStorage.setItem("awesomeBooks", awesomeBooks);
+function deleteBook(bookNum) {
+  let container = document.getElementById('book' + bookNum);
+  container.remove();
+  awesomeBooks = awesomeBooks.filter(book => book.bookId !== bookNum);
+  localStorage.clear();
+  localStorage.setItem("awesomeBooks", JSON.stringify(awesomeBooks));
 }

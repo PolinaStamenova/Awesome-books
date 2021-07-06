@@ -1,8 +1,5 @@
 # Awesome-books
-A project to keep track of books a user has read, using JS and basic HTML/ CSS
-
-
-
+A project to keep track of books a user has read, using JS and basic HTML.
 
 ## Project Decription
 A lightweight JavaScript project that allows users to interact with a fully client-based interface.
@@ -16,18 +13,15 @@ The project solely uses Bookstrap, and no CSS at all, as it's a JavaScript pract
 ## Screenshot of the page
 ![Screenshot Profile Page](./assets/screenshot.png)
 
-
 ## Build With
 
 - HTML
 - JAVASCRIPT
 - BOOTSTRAP
 
-
 ## Live Version Link
 
 [Click Here!](https://polinastamenova.github.io/Awesome-books/)
-
 
 
 ## Contributors
@@ -53,3 +47,7 @@ Feel free to check the [issues page](issues/).
 
 Give a ⭐️ if you like this project!
 
+## Acknowledgments
+
+- Microverse
+- Creative Commons

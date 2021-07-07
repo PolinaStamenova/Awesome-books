@@ -7,17 +7,14 @@ if (localStorage.getItem("bookIncrement")) {
 
 function displayBook(...args) {
   const [bookTitle, bookAuthor, selectedBook] = args;
-
   const mainContainer = document.getElementById("BookContainer");
   const container = document.createElement("li");
-  container.id = `book${args[2]}`;
+  container.id = `book${selectedBook}`;
   container.classList.add("container", "container-style");
-
   const contentTitle = document.createElement("p");
   contentTitle.classList.add("title-style");
-  contentTitle.textContent = `'${bookTitle}' by ${bookAuthor}`;
+  contentTitle.textContent = `"${bookTitle}" by ${bookAuthor}`;
   container.appendChild(contentTitle);
-
   const removeButton = document.createElement("button");
   removeButton.classList.add("btn", "col-5", "my-2", "button-style");
   removeButton.id = selectedBook;
@@ -36,7 +33,6 @@ class Booklist {
 
   addBook(book) {
     this.awesomeBooks.push(book);
-
     displayBook(book.bookTitle, book.bookAuthor, book.bookId);
     bookIncrement += 1;
     localStorage.clear();

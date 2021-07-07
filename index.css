@@ -1,3 +1,24 @@
 body {
-  background-color: rgb(240, 236, 236);
+  background-color: #fff;
+}
+
+ul {
+  list-style: none;
+}
+
+.mainContainer-style {
+  border: 1px solid #000;
+  border-radius: 0.2rem;
+}
+
+.container-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.button-style {
+  border: 1px solid #000;
+  box-shadow: 3px 3px 3px #000;
+  max-width: 200px;
 }

@@ -1,10 +1,16 @@
-/* eslint-disable max-classes-per-file, no-use-before-define */
-
+/* eslint-disable max-classes-per-file, no-use-before-define, no-undef */
 let bookIncrement = 0;
 if (localStorage.getItem('bookIncrement')) {
   bookIncrement = localStorage.getItem('bookIncrement');
 }
-
+function timeItUp() {
+  const timer = document.getElementById('Timer');
+  const datertimer = luxon.DateTime.now();
+  timer.innerText = datertimer.toLocaleString(luxon.DateTime.DATETIME_MED);
+}
+setInterval(() => {
+  timeItUp();
+}, 1000);
 function displayBook(...args) {
   const [bookTitle, bookAuthor, selectedBook] = args;
   const mainContainer = document.getElementById('BookContainer');
@@ -88,6 +94,9 @@ document.getElementById('SubmitButton').addEventListener('click', () => {
   const bookAuthorInput = document.getElementById('BookAuthor').value;
 
   list.addBook(new Book(bookTitleInput, bookAuthorInput, bookIncrement));
+
+  document.getElementById('BookTitle').value = '';
+  document.getElementById('BookAuthor').value = '';
 });
 
 function printStorage() {
@@ -96,4 +105,38 @@ function printStorage() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', printStorage());
+const addBookDiv = document.getElementById('addBookDiv');
+const listDiv = document.getElementById('bookListDiv');
+const contactDiv = document.getElementById('contactDiv');
+
+const navList = document.getElementById('listLink');
+navList.addEventListener('click', () => {
+  addBookDiv.classList.add('d-none');
+  listDiv.classList.remove('d-none');
+  contactDiv.classList.remove('d-block');
+  contactDiv.classList.add('d-none');
+});
+
+const navAdd = document.getElementById('addNewLink');
+navAdd.addEventListener('click', () => {
+  addBookDiv.classList.remove('d-none');
+  addBookDiv.classList.add('d-block');
+  listDiv.classList.add('d-none');
+  contactDiv.classList.remove('d-block');
+  contactDiv.classList.add('d-none');
+});
+
+const navContact = document.getElementById('contactLink');
+navContact.addEventListener('click', () => {
+  contactDiv.classList.remove('d-none');
+  contactDiv.classList.add('d-block');
+  addBookDiv.classList.add('d-none');
+  listDiv.classList.add('d-none');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  listDiv.classList.add('d-none');
+  contactDiv.classList.add('d-none');
+  printStorage();
+  timeItUp();
+});

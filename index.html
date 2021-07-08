@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome Books</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,34 +20,91 @@
     <link href="index.css" rel="stylesheet" />
   </head>
   <body>
-    <h2 class="second-title text-center mt-5">Add a new book</h2>
-    <div class="container mx-auto mainContainer-style justify-content-center">
-      <div class="col-md-8 text-center justify-content-center mx-auto mt-3">
-        <div class="form-group mx-auto my-2">
-          <input type="text" id="BookTitle" class="col-8 input-style" placeholder="Title" />
-        </div>
-        <div class="form-group mx-auto my-2">
-          <input
-            type="text"
-            id="BookAuthor"
-            class="col-8 input-style"
-            placeholder="Author"
-          />
-        </div>
-        <button
-          type="button"
-          class="button-style btn col-5 my-3"
-          id="SubmitButton"
+    <header class="border border-dark rounded mx-3 mt-2">
+      <nav
+        class="
+          navbar navbar-expand-lg navbar-light
+          justify-content-between
+          px-2
+        "
+      >
+        <a class="navbar-brand" href="#">Awesome books</a>
+        <ul class="navbar-nav d-flex flex-row justify-content-between active">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="listLink">List </a>
+          </li>
+          <li class="nav-item border border-dark">
+            <a class="nav-link" href="#" id="addNewLink">Add new</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="contactLink">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="addBookDiv">
+        <h2 class="second-title text-center my-5">Add a new book</h2>
+        <div
+          class="container mx-auto mainContainer-style justify-content-center"
         >
-          Save Book
-        </button>
+          <div class="col-md-8 text-center justify-content-center mx-auto mt-3">
+            <div class="form-group mx-auto my-2">
+              <input
+                type="text"
+                id="BookTitle"
+                class="col-8 input-style"
+                placeholder="Title"
+              />
+            </div>
+            <div class="form-group mx-auto my-2">
+              <input
+                type="text"
+                id="BookAuthor"
+                class="col-8 input-style"
+                placeholder="Author"
+              />
+            </div>
+            <button
+              type="button"
+              class="button-style btn col-5 my-3"
+              id="SubmitButton"
+            >
+              Save Book
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-    <h2 class="second-title text-center my-3">Your Awesome Books</h2>
-    <ul
-      class="container book-container row mx-auto px-0 mainContainer-style my-2"
-      id="BookContainer"
-    ></ul>
+      <div id="bookListDiv">
+        <h2 class="second-title text-center my-5">Your Awesome Books</h2>
+        <ul
+          class="
+            container
+            book-container
+            row
+            mx-auto
+            px-0
+            mainContainer-style
+            my-2
+          "
+          id="BookContainer"
+        ></ul>
+      </div>
+      <div id="contactDiv" class="container mx-auto my-5 text-center">
+        <h2>Contact Information</h2>
+        <p class="pt-5 h4">
+          If you have any questions,please feel free to contact us!
+        </p>
+        <ul class="mt-5">
+          <li class="h4">Our e-mail: mail@mail.com</li>
+          <li class="h4">Our phone nummber: +49 777 888 999</li>
+          <li class="h4">Our adress: Aleksanderplatz 12, Germany, Berlin</li>
+        </ul>
+      </div>
+    </main>
+    <footer class="mx-3 border mt-5 border-dark rounded">
+      <div class="p-3">Copyright &copy; ...</div>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"

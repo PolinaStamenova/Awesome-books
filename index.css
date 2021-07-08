@@ -1,6 +1,10 @@
 body {
   background-color: #fff;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
+}
+
+main {
+  min-height: 79.8vh;
 }
 
 ul {
@@ -8,7 +12,13 @@ ul {
   background-color: #fff;
 }
 
-li:nth-child(odd) {
+.container-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.container-style:nth-child(odd) {
   background-color: #ddd;
 }
 
@@ -19,12 +29,6 @@ li:nth-child(odd) {
 
 .mainContainer-style:empty {
   border: none;
-}
-
-.container-style {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
 }
 
 .button-style {
@@ -39,4 +43,12 @@ li:nth-child(odd) {
 .button-style:hover {
   box-shadow: 2px 5px 4px -4px hsla(0, 0%, 0%, 0.3);
   max-width: 195px;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-none {
+  display: none;
 }

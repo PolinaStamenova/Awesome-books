@@ -1,10 +1,18 @@
 /* eslint-disable max-classes-per-file, no-use-before-define */
+var DateTime = luxon.DateTime;
 
 let bookIncrement = 0;
 if (localStorage.getItem("bookIncrement")) {
   bookIncrement = localStorage.getItem("bookIncrement");
 }
-
+function timeItUp(){
+  let timer = document.getElementById("Timer");
+  const datertimer = DateTime.now();
+  timer.innerText = datertimer.toLocaleString(DateTime.DATETIME_MED);
+}
+setInterval(()=> {
+  timeItUp();
+}, 1000);
 function displayBook(...args) {
   const [bookTitle, bookAuthor, selectedBook] = args;
   const mainContainer = document.getElementById("BookContainer");
@@ -130,4 +138,9 @@ navContact.addEventListener("click", () => {
   listDiv.classList.add("d-none");
 });
 
-document.addEventListener("DOMContentLoaded", printStorage());
+document.addEventListener("DOMContentLoaded", () =>{
+  listDiv.classList.add("d-none");
+  contactDiv.classList.add("d-none");
+  printStorage();
+  timeItUp();
+});
